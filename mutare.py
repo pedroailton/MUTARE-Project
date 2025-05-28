@@ -142,7 +142,7 @@ def input_senha_asteriscos(prompt='Senha: '):
     print(prompt, end='', flush=True)
     senha = ''
     
-    if os.name == 'nt':
+    if os.name == 'nt': #SABER EXPLICAR
         while True:
             char = msvcrt.getch()
             if char in(b'\r', b'\n'):
@@ -494,7 +494,7 @@ def excluir_conta(Email):
     senha_hash = conta[1] if isinstance(conta[1], bytes) else conta[1].encode('utf-8')
     
     if not bcrypt.checkpw(senha, senha_hash):
-        print(Fore.RED + 'enha incorreta. Processo de exclusão interrompido.')
+        print(Fore.RED + 'Senha incorreta. Processo de exclusão interrompido.')
         time.sleep(1)
         limpar_tela()
         return
@@ -705,7 +705,7 @@ def progresso():
 
         # Barra de progresso proporcional
         barra_len = total_previstos if total_previstos <= 10 else 10
-        preenchido = '🟩' * int((porcentagem / 100) * barra_len)
+        preenchido = '🟩' * int((porcentagem / 100) * barra_len) #emojis
         vazio = '⬜' * (barra_len - len(preenchido))
         barra = f"{preenchido}{vazio}"
 
