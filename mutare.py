@@ -196,8 +196,8 @@ def menu_log_cad():
     Direciona o usuário para a tela de login ou cadastro conforme a escolha.
     Em caso de entrada inválida, exibe uma mensagem de erro e recarrega o menu.'''
 
-    while True:
-        limpar_tela()
+    while True: #ciclo sem fim
+        limpar_tela() #limpa tela a cada ciclo
         print(Fore.WHITE + '\n=== Bem-vindo ao Mutare! ===')
         print(Fore.WHITE + 'Escolha uma opção')
         print(Fore.CYAN + '[1] Login')
