@@ -16,7 +16,7 @@ import time
 
 import bcrypt
 """
-Usa salt para dificultar ataques de força bruta.
+Usa salt para diferenciar duas senhas iguais criptografadas no banco de dados
 No código:
 bcrypt.hashpw() para gerar senha criptografada.
 bcrypt.checkpw() para validar senha no login.
@@ -24,15 +24,22 @@ bcrypt.checkpw() para validar senha no login.
 """
 
 from datetime import datetime, timedelta, date
+"""
+No código:
+datetime.strptime() para converter texto em data.
+datetime.now() para registrar criação de hábitos.
+date.today() para comparação com progresso atual.
+timedelta pode ser usado para calcular diferenças de dias.
+Usado em: funções de hábitos (inserir_habito, progresso), mascote, etc.
+"""
 
-
-import re
+import re #biblioteca para Regular Expression
 """
 Função:
 Expressões regulares (regex) para verificar padrões de texto.
 No código:
 re.match(r'^[A-Za-z0-9 ]+$', nome) valida se o nome do hábito tem apenas letras, números e espaços.
-📍 Usado em: inserir_habito().
+Usado em: inserir_habito().
 """
 
 import sqlite3 
@@ -45,7 +52,7 @@ sqlite3.connect('Mutare.db'): conecta ao banco.
 cursor.execute(): executa comandos SQL.
 conn.commit(): salva mudanças.
 cursor.fetchone(), cursor.fetchall() para ler dados.
-📍 Usado em: quase todas as funções que envolvem dados do usuário e hábitos.
+Usado em: quase todas as funções que envolvem dados do usuário e hábitos.
 """
 
 
