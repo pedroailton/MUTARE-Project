@@ -1,13 +1,55 @@
 from colorama import init, Fore 
-import sys
-import os
-import time
-import bcrypt
-from datetime import datetime, timedelta, date
-import re
-import sqlite3 
+#para instalação: pip install colorama bcrypt
+#init permite a troca de cores no terminal e o Fore habilita 
+#Fore: permite definir cores como Fore.YELLOW, Fore.RED, etc.
 
-init(autoreset=True)
+import sys
+#usado em input_senha_asteriscos() para Unix.
+
+import os
+# Detecta o SO -Sistema Operacional (os.name) e executa comandos (os.system).
+
+import time
+#Controle de tempo e delays.
+#Faz pausas com time.sleep() e mede tempo.
+#Usado em: mensagens de erro, sucesso e carregamento.
+
+import bcrypt
+"""
+Usa salt para dificultar ataques de força bruta.
+No código:
+bcrypt.hashpw() para gerar senha criptografada.
+bcrypt.checkpw() para validar senha no login.
+📍 Usado em: tela_cadastro(), tela_login(), atualizar_senha(), excluir_conta().
+"""
+
+from datetime import datetime, timedelta, date
+
+
+import re
+"""
+Função:
+Expressões regulares (regex) para verificar padrões de texto.
+No código:
+re.match(r'^[A-Za-z0-9 ]+$', nome) valida se o nome do hábito tem apenas letras, números e espaços.
+📍 Usado em: inserir_habito().
+"""
+
+import sqlite3 
+"""
+Função:
+Interface com o banco de dados SQLite.
+Permite criar tabelas, inserir e consultar dados.
+No código:
+sqlite3.connect('Mutare.db'): conecta ao banco.
+cursor.execute(): executa comandos SQL.
+conn.commit(): salva mudanças.
+cursor.fetchone(), cursor.fetchall() para ler dados.
+📍 Usado em: quase todas as funções que envolvem dados do usuário e hábitos.
+"""
+
+
+init(autoreset=True) #reseta a cor automaticamente após cada print()
 
 # Conexão com o SQLite
 conn = sqlite3.connect('Mutare.db')
